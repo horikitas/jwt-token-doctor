@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { diagnoseToken, TokenDiagnosis } from "@/lib/diagnoseToken";
+import { diagnoseToken, TokenDiagnosis } from "@/src/lib/diagnoseToken";
 
 export default function Home() {
   const [token, setToken] = useState("");
