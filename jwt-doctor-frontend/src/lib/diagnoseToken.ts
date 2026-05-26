@@ -5,19 +5,15 @@ export type Finding = {
   recommendation: string;
 };
 
-export type DecodedJwt = {
-  header: Record<string, unknown>;
-  payload: Record<string, unknown>;
-  signature: string;
-};
-
-export type TokenDiagnosis = {
+export interface TokenDiagnosis {
   validFormat: boolean;
-  decodedJwt: DecodedJwt | null;
+  header?: Record<string, unknown>;
+  payload?: Record<string, unknown>;
+  signature?: string;
   findings: Finding[];
   riskScore: number;
   severity: string;
-};
+}
 
 export async function diagnoseToken(token: string): Promise<TokenDiagnosis> {
   const response = await fetch(

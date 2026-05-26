@@ -28,7 +28,7 @@ export default function Home() {
     <main className="min-h-screen bg-slate-950 text-slate-100 p-8">
       <div className="mx-auto max-w-5xl space-y-6">
         <section>
-          <h1 className="text-4xl font-bold">JWT Token Doctor</h1>
+          <h1 className="text-4xl font-bold">JWT Token Debugger</h1>
           <p className="mt-2 text-slate-400">
             Decode and diagnose JWT security issues.
           </p>
@@ -95,11 +95,21 @@ export default function Home() {
               )}
             </div>
 
-            {diagnosis.decodedJwt && (
-              <>
-                <JsonPanel title="Header" data={diagnosis.decodedJwt.header} />
-                <JsonPanel title="Payload" data={diagnosis.decodedJwt.payload} />
-              </>
+            {diagnosis.header && (
+              <JsonPanel title="JWT Header" data={diagnosis.header} />
+            )}
+
+            {diagnosis.payload && (
+              <JsonPanel title="JWT Payload" data={diagnosis.payload} />
+            )}
+
+            {diagnosis.signature && (
+              <div className="rounded-2xl bg-slate-900 p-6">
+                <h2 className="text-xl font-semibold">JWT Signature</h2>
+                <pre className="mt-4 overflow-auto rounded-xl bg-slate-950 p-4 text-sm break-all whitespace-pre-wrap">
+                  {diagnosis.signature.trim()}
+                </pre>
+              </div>
             )}
           </section>
         )}
